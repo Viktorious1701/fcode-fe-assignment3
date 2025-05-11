@@ -1,67 +1,256 @@
 /* App.css */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* App Container */
 .App {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* Ensure the container covers the entire viewport height */
+  min-height: 100vh;
+  padding: 20px;
 }
 
-.row {
+/* Main ToDo App Container */
+.todo-app {
+  max-width: 600px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 0 auto;
+}
+
+/* Theme Variations */
+.light-theme {
+  background-color: #fff;
+  color: #333;
+}
+
+.dark-theme {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+}
+
+/* Header Section */
+.app-header {
   display: flex;
-  justify-content: center;
-  margin-bottom: 20px; /* Add some space between rows */
-  gap: 100px; /* Add some space between columns */
-}
-
-.ToDoList {
-  margin: 0 10px; /* Add some space between to-do lists */
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
 }
 
 h1 {
-  color: #333;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  text-align: center;
+  font-size: 1.8rem;
+  margin: 0;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 5px 10px;
+  background-color: transparent;
 }
-.color1 {
-  background-color: #f0dedd;
-  min-height: 50vh;
-  min-width: 50vh;
-  border-radius: 16px;
+
+/* Add Task Section */
+.add-task {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
 }
-.color2 {
-  background-color: #ced5e0;
-  min-height: 50vh;
-  min-width: 50vh;
-  border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
 }
+
+.dark-theme input[type="text"] {
+  background-color: #34495e;
+  color: #ecf0f1;
+  border-color: #4a6278;
+}
+
 button {
   border-radius: 6px;
   background-color: #4caf50;
   color: white;
-  padding: 5px 5px;
-  margin: 8px 1px;
+  padding: 8px 16px;
   border: none;
   cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
 }
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Filter Section */
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  justify-content: center;
+}
+
+.filters button {
+  background-color: #f1f1f1;
+  color: #333;
+  font-size: 0.9rem;
+  padding: 5px 15px;
+}
+
+.dark-theme .filters button {
+  background-color: #34495e;
+  color: #ecf0f1;
+}
+
+.filters button.active {
+  background-color: #4caf50;
+  color: white;
+}
+
+/* Stats Section */
+.stats {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.dark-theme .stats {
+  color: #bdc3c7;
+}
+
+/* Task List */
+.task-list {
+  list-style-type: none;
+  padding: 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Task Items */
 li {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 8px;
+  background-color: #f9f9f9;
+  border-radius: 6px;
 }
+
+.dark-theme li {
+  background-color: #34495e;
+}
+
+li.completed {
+  opacity: 0.7;
+}
+
+/* Task Priority Styles */
+li.priority-low {
+  border-left: 5px solid #3498db;
+}
+
+li.priority-medium {
+  border-left: 5px solid #f39c12;
+}
+
+li.priority-high {
+  border-left: 5px solid #e74c3c;
+}
+
+/* Task Content */
 .content {
   display: flex;
-  justify-content: center;
   align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.completed-text {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.task-date {
+  font-size: 0.75rem;
+  color: #888;
+  margin-left: 10px;
+}
+
+.dark-theme .task-date {
+  color: #bdc3c7;
+}
+
+/* Task Action Buttons */
+.crud {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.crud button {
+  padding: 4px 8px;
+  font-size: 0.8rem;
+}
+
+.crud button:first-child {
+  background-color: #3498db;
+}
+
+.crud button:last-child {
+  background-color: #e74c3c;
+}
+
+/* Priority Select */
+.priority-select {
+  padding: 4px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 0.8rem;
+}
+
+.priority-select.priority-low {
+  color: #3498db;
+}
+
+.priority-select.priority-medium {
+  color: #f39c12;
+}
+
+.priority-select.priority-high {
+  color: #e74c3c;
+}
+
+.dark-theme .priority-select {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  border-color: #4a6278;
+}
+
+/* Checkbox Styling */
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
 }
